@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="sea_unicornis"
+      metal:use-macro="api.macro('kotti:templates/view/master.pt')">
+
+  <article metal:fill-slot="content" class="document-view content">
+    <h1 i18n:translate="">Welcome to Sea Unicornis</h1>
+    <p class="description" i18n:translate="">
+      This site is Beta testing for simple Hive application.
+    </p>
+
+    <div class="body">
+
+      <h2 i18n:translate="">Log in</h2>
+      <span i18n:translate="">
+        You can login to Sea Unicornis and start using Hive applications: 
+      </span>
+      <a href="/@@login" class="btn btn-small btn-success" i18n:translate="">log in</a>
+
+      <h2 i18n:translate="">Sign Up</h2>
+      <span i18n:translate="">
+        Sign up if you don't have an account in Sea Unicornis:
+      </span>
+      <a href="/@@signup" class="btn btn-small btn-info" i18n:translate="">sign up</a>
+    </div>
+  </article>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="sea_unicornis"
+      metal:use-macro="api.macro('kotti:templates/site-setup/master.pt')">
+
+  <article metal:fill-slot="content" class="document-view content">
+    <h1 i18n:translate="">Sign UP</h1>
+    <p class="description" i18n:translate="">
+      Sign up description
+    </p>
+
+    <div class="body">
+      <div class="tab-content">
+        <div class="tab-pane active" id="add-user-tab">
+          <form tal:replace="structure user_addform" />
+        </div>
+      </div>
+    </div>
+  </article>
+
+</html>

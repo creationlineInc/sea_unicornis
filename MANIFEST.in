@@ -1,0 +1,8 @@
+global-include *.rst *.ini
+include MANIFEST.in
+recursive-include sea_unicornis *.py
+recursive-include sea_unicornis/locale *.mo *.po *.pot
+recursive-include sea_unicornis/static *.css *.js *.png *.gif
+recursive-include sea_unicornis/templates *.pt
+recursive-include sea_unicornis/kotti-overrides *.pt
+recursive-include sea_unicornis/tests *.txt
