@@ -159,7 +159,7 @@ class EMRJobResourceSchema(ContentSchema):
     )
 
 def add_emrjob_resource(context, request):
-    return generic_add(context, request, SeaUnicornisResourceSchema(),
+    return generic_add(context, request, EMRJobResourceSchema(),
                        EMRJobResource, EMRJobResource.type_info.title)
 
 from kotti_mapreduce.views import deferred_resource_data
