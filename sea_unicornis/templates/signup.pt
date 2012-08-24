@@ -5,10 +5,7 @@
       metal:use-macro="api.macro('kotti:templates/site-setup/master.pt')">
 
   <article metal:fill-slot="content" class="document-view content">
-    <h1 i18n:translate="">Sign UP</h1>
-    <p class="description" i18n:translate="">
-      Sign up description
-    </p>
+    <h1 i18n:translate="">Sign Up</h1>
 
     <div class="body">
       <div class="tab-content">
