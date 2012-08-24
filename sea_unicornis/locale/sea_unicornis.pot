@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sea_unicornis 0.1.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-08-22 16:28+0900\n"
+"POT-Creation-Date: 2012-08-24 17:25+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,235 +17,203 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: sea_unicornis/views.py:50
+#: sea_unicornis/views.py:51
 msgid "Title"
 msgstr ""
 
-#: sea_unicornis/views.py:56
+#: sea_unicornis/views.py:57
 msgid "AWS access key ID"
 msgstr ""
 
-#: sea_unicornis/views.py:57
+#: sea_unicornis/views.py:58
 msgid "AWS access key ID to use AWS API."
 msgstr ""
 
-#: sea_unicornis/views.py:61
+#: sea_unicornis/views.py:62
 msgid "AWS secret access key"
 msgstr ""
 
-#: sea_unicornis/views.py:62
+#: sea_unicornis/views.py:63
 msgid "AWS secret access key to use AWS API."
 msgstr ""
 
-#: sea_unicornis/views.py:67
+#: sea_unicornis/views.py:68
 msgid "AWS region"
 msgstr ""
 
-#: sea_unicornis/views.py:68
+#: sea_unicornis/views.py:69
 msgid "AWS region code where a MapReduce job is executed."
 msgstr ""
 
-#: sea_unicornis/views.py:72
+#: sea_unicornis/views.py:73
 msgid "Master instance type"
 msgstr ""
 
-#: sea_unicornis/views.py:73
+#: sea_unicornis/views.py:74
 msgid "EC2 instance type of the master node."
 msgstr ""
 
-#: sea_unicornis/views.py:79
+#: sea_unicornis/views.py:80
 msgid "Slave instance type"
 msgstr ""
 
-#: sea_unicornis/views.py:80
+#: sea_unicornis/views.py:81
 msgid "EC2 instance type of the slave nodes."
 msgstr ""
 
-#: sea_unicornis/views.py:86
+#: sea_unicornis/views.py:87
 msgid "EC2 key pair name"
 msgstr ""
 
-#: sea_unicornis/views.py:87
+#: sea_unicornis/views.py:88
 msgid "EC2 key pair filename."
 msgstr ""
 
-#: sea_unicornis/views.py:92
+#: sea_unicornis/views.py:93
 msgid "EC2 key pair private key file"
 msgstr ""
 
-#: sea_unicornis/views.py:93
+#: sea_unicornis/views.py:94
 msgid "It is not available now."
 msgstr ""
 
-#: sea_unicornis/views.py:99
+#: sea_unicornis/views.py:100
 msgid "Number of instances"
 msgstr ""
 
-#: sea_unicornis/views.py:100
+#: sea_unicornis/views.py:101
 msgid "Number of instances in the Hadoop cluster."
 msgstr ""
 
-#: sea_unicornis/views.py:105
+#: sea_unicornis/views.py:106
 msgid "Action on failure"
 msgstr ""
 
-#: sea_unicornis/views.py:106
+#: sea_unicornis/views.py:107
 msgid "Action to take if a step terminates."
 msgstr ""
 
-#: sea_unicornis/views.py:112
+#: sea_unicornis/views.py:113
 msgid "Keep alive"
 msgstr ""
 
-#: sea_unicornis/views.py:113
+#: sea_unicornis/views.py:114
 msgid "Denotes whether the cluster should stay alive upon completion."
 msgstr ""
 
-#: sea_unicornis/views.py:119
+#: sea_unicornis/views.py:120
 msgid "Enable debugging"
 msgstr ""
 
-#: sea_unicornis/views.py:120
+#: sea_unicornis/views.py:121
 msgid "Denotes whether AWS console debugging should be enabled."
 msgstr ""
 
-#: sea_unicornis/views.py:127
+#: sea_unicornis/views.py:128
 msgid "Termination protection"
 msgstr ""
 
-#: sea_unicornis/views.py:128
+#: sea_unicornis/views.py:129
 msgid "Set termination protection on jobflows."
 msgstr ""
 
-#: sea_unicornis/views.py:133
+#: sea_unicornis/views.py:134
 msgid "log URI"
 msgstr ""
 
-#: sea_unicornis/views.py:134
+#: sea_unicornis/views.py:135
 msgid "URI of the S3 bucket to place logs."
 msgstr ""
 
-#: sea_unicornis/views.py:138
+#: sea_unicornis/views.py:139
 msgid "AMI version"
 msgstr ""
 
-#: sea_unicornis/views.py:139
+#: sea_unicornis/views.py:140
 msgid "Amazon Machine Image (AMI) version to use for instances."
 msgstr ""
 
-#: sea_unicornis/views.py:146
+#: sea_unicornis/views.py:147
 msgid "Hadoop version"
 msgstr ""
 
-#: sea_unicornis/views.py:147
+#: sea_unicornis/views.py:148
 msgid "Version of Hadoop to use. This no longer."
 msgstr ""
 
-#: sea_unicornis/views.py:154
+#: sea_unicornis/views.py:155
 msgid "Hive version"
 msgstr ""
 
-#: sea_unicornis/views.py:155
+#: sea_unicornis/views.py:156
 msgid "Version of Hive to use."
 msgstr ""
 
-#: sea_unicornis/views.py:170
+#: sea_unicornis/views.py:171
 msgid "Resource"
 msgstr ""
 
-#: sea_unicornis/views.py:171
+#: sea_unicornis/views.py:172
 msgid "Resource name."
 msgstr ""
 
-#: sea_unicornis/views.py:184
+#: sea_unicornis/views.py:186
 msgid "Job type"
 msgstr ""
 
-#: sea_unicornis/views.py:185
+#: sea_unicornis/views.py:187
 msgid "Application type for job flow."
 msgstr ""
 
-#: sea_unicornis/views.py:191
+#: sea_unicornis/views.py:193
 msgid "Hive site"
 msgstr ""
 
-#: sea_unicornis/views.py:192
+#: sea_unicornis/views.py:194
 msgid "Use metastore located outside of the cluster."
 msgstr ""
 
-#: sea_unicornis/views.py:198
-msgid "Bootstrap #1"
+#: sea_unicornis/views.py:199
+msgid "Bootstraps"
 msgstr ""
 
-#: sea_unicornis/views.py:205
-msgid "Bootstrap #2"
+#: sea_unicornis/views.py:200
+msgid "Input a bootstrap name registered in advance."
 msgstr ""
 
-#: sea_unicornis/views.py:212
-msgid "Bootstrap #3"
+#: sea_unicornis/views.py:216
+msgid "Action Type"
 msgstr ""
 
-#: sea_unicornis/views.py:219
-msgid "Bootstrap #4"
+#: sea_unicornis/views.py:217
+msgid "The action type."
 msgstr ""
 
-#: sea_unicornis/views.py:226
-msgid "Bootstrap #5"
+#: sea_unicornis/views.py:223
+msgid "Path URI"
 msgstr ""
 
-#: sea_unicornis/views.py:233
-msgid "Bootstrap #6"
+#: sea_unicornis/views.py:224
+msgid "The Path URI."
 msgstr ""
 
-#: sea_unicornis/views.py:240
-msgid "Bootstrap #7"
+#: sea_unicornis/views.py:229
+msgid "Optional arguments"
+msgstr ""
+
+#: sea_unicornis/views.py:230
+msgid "Arguments to pass to the bootstrap."
 msgstr ""
 
 #: sea_unicornis/views.py:247
-msgid "Bootstrap #8"
-msgstr ""
-
-#: sea_unicornis/views.py:254
-msgid "Bootstrap #9"
-msgstr ""
-
-#: sea_unicornis/views.py:261
-msgid "Bootstrap #10"
-msgstr ""
-
-#: sea_unicornis/views.py:268
-msgid "Bootstrap #11"
-msgstr ""
-
-#: sea_unicornis/views.py:275
-msgid "Bootstrap #12"
-msgstr ""
-
-#: sea_unicornis/views.py:282
-msgid "Bootstrap #13"
-msgstr ""
-
-#: sea_unicornis/views.py:289
-msgid "Bootstrap #14"
-msgstr ""
-
-#: sea_unicornis/views.py:296
-msgid "Bootstrap #15"
-msgstr ""
-
-#: sea_unicornis/views.py:303
-msgid "Bootstrap #16"
-msgstr ""
-
-#: sea_unicornis/views.py:320
 msgid "Step arguments"
 msgstr ""
 
-#: sea_unicornis/views.py:321
+#: sea_unicornis/views.py:248
 msgid "Arguments to pass to the step."
 msgstr ""
 
-#: sea_unicornis/views.py:386
+#: sea_unicornis/views.py:320
 msgid "The registration mail sent to ${email}."
 msgstr ""
 
@@ -269,7 +237,7 @@ msgstr ""
 msgid "log in"
 msgstr ""
 
-#: sea_unicornis/templates/front-page.pt:21
+#: sea_unicornis/templates/front-page.pt:21 sea_unicornis/templates/signup.pt:8
 msgid "Sign Up"
 msgstr ""
 
@@ -279,13 +247,5 @@ msgstr ""
 
 #: sea_unicornis/templates/front-page.pt:25
 msgid "sign up"
-msgstr ""
-
-#: sea_unicornis/templates/signup.pt:8
-msgid "Sign UP"
-msgstr ""
-
-#: sea_unicornis/templates/signup.pt:9
-msgid "Sign up description"
 msgstr ""
 
