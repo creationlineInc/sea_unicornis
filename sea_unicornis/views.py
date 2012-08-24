@@ -3,22 +3,17 @@ import colander
 from deform.widget import HiddenWidget
 from deform.widget import PasswordWidget
 from deform.widget import TextAreaWidget
-from deform.widget import TextInputWidget
 from deform.widget import SelectWidget
 from kotti.events import notify
 from kotti.message import email_set_password
 from kotti.security import get_principals
 from kotti.resources import Content
-from kotti.views.edit import generic_edit
 from kotti.views.edit import generic_add
+from kotti.views.form import ObjectType
 from kotti.views.users import UserAddFormView
 from kotti.views.users import user_schema
-from kotti.views.util import ensure_view_selector
 from kotti.views.util import template_api
 from pyramid.httpexceptions import HTTPFound
-from pyramid.response import Response
-from sqlalchemy import asc
-from sqlalchemy import desc
 
 from kotti_mapreduce.resources import Bootstrap
 from kotti_mapreduce.resources import EMRJobResource
@@ -26,6 +21,14 @@ from kotti_mapreduce.resources import JobContainer
 from kotti_mapreduce.resources import JobFlow
 from kotti_mapreduce.resources import JobService
 from kotti_mapreduce.resources import JobStep
+from kotti_mapreduce.views import _SUPPORT_ACTION_TYPE
+from kotti_mapreduce.views import _SUPPORT_INSTANCE_TYPE
+from kotti_mapreduce.views import deferred_bootstrap_validator
+from kotti_mapreduce.views import deferred_bootstrap_widget
+from kotti_mapreduce.views import deferred_default_step_args
+from kotti_mapreduce.views import deferred_jobstep_widget
+from kotti_mapreduce.views import deferred_resource_data
+from kotti_mapreduce.views import step_args_validator
 
 from sea_unicornis import _
 from sea_unicornis.events import UserAdded
@@ -41,8 +44,6 @@ _RESOURCE_VERSIONS = {
 del Content.type_info.edit_links[1]  # disable share operation
 JobContainer.type_info.edit_links = []  # disable edit operation
 
-
-from kotti_mapreduce.views import _SUPPORT_INSTANCE_TYPE
 
 class ContentSchema(colander.MappingSchema):
     title = colander.SchemaNode(
@@ -162,7 +163,6 @@ def add_emrjob_resource(context, request):
     return generic_add(context, request, EMRJobResourceSchema(),
                        EMRJobResource, EMRJobResource.type_info.title)
 
-from kotti_mapreduce.views import deferred_resource_data
 
 class JobServiceSchema(ContentSchema):
     resource_id = colander.SchemaNode(
@@ -176,7 +176,6 @@ def add_jobservice(context, request):
     return generic_add(context, request, JobServiceSchema(),
                        JobService, JobService.type_info.title)
 
-from kotti_mapreduce.views import deferred_bootstrap_data
 
 class JobFlowSchema(ContentSchema):
     jobtype = colander.SchemaNode(
@@ -192,127 +191,46 @@ class JobFlowSchema(ContentSchema):
         description=_(u'Use metastore located outside of the cluster.'),
         missing=u'',
     )
-    # FIXME: implement one to many relation
-    bootstrap1_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #1'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap2_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #2'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap3_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #3'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap4_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #4'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap5_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #5'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap6_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #6'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap7_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #7'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap8_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #8'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap9_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #9'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap10_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #10'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap11_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #11'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap12_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #12'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap13_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #13'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap14_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #14'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap15_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #15'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
-    )
-    bootstrap16_id = colander.SchemaNode(
-        colander.String(),
-        title=_(u'Bootstrap #16'),
-        widget=deferred_bootstrap_data,
-        default=u'',
-        missing=u'',
+    bootstrap_titles = colander.SchemaNode(
+        ObjectType(),
+        title=_('Bootstraps'),
+        description=_(u'Input a bootstrap name registered in advance.'),
+        validator=deferred_bootstrap_validator,
+        widget=deferred_bootstrap_widget,
+        missing=[],
     )
 
 def add_jobflow(context, request):
     return generic_add(context, request, JobFlowSchema(),
                        JobFlow, JobFlow.type_info.title)
 
-from kotti_mapreduce.views import deferred_jobstep_widget
-from kotti_mapreduce.views import step_args_validator
-from kotti_mapreduce.views import deferred_default_step_args
+
+class BootstrapSchema(ContentSchema):
+    action_type = colander.SchemaNode(
+        colander.String(),
+        title=_(u'Action Type'),
+        description=_(u'The action type.'),
+        widget=SelectWidget(values=_SUPPORT_ACTION_TYPE),
+        default=u'',
+    )
+    path_uri = colander.SchemaNode(
+        colander.String(),
+        title=_(u'Path URI'),
+        description=_(u'The Path URI.'),
+        missing=u'',
+    )
+    optional_args = colander.SchemaNode(
+        colander.String(),
+        title=_(u'Optional arguments'),
+        description=_(u'Arguments to pass to the bootstrap.'),
+        widget=TextAreaWidget(cols=40, rows=5),
+        missing=u'',
+    )
+
+def add_bootstrap(context, request):
+    return generic_add(context, request, BootstrapSchema(),
+                       Bootstrap, Bootstrap.type_info.title)
+
 
 class JobStepSchema(ContentSchema):
     step_args = colander.SchemaNode(
@@ -328,6 +246,7 @@ class JobStepSchema(ContentSchema):
 def add_jobstep(context, request):
     return generic_add(context, request, JobStepSchema(),
                        JobStep, JobStep.type_info.title)
+
 
 def includeme_edit(config):
     config.add_view(
@@ -352,11 +271,19 @@ def includeme_edit(config):
     )
 
     config.add_view(
+        add_bootstrap,
+        name=Bootstrap.type_info.add_view,
+        permission='add',
+        renderer='kotti_mapreduce:templates/bootstrap-edit.pt',
+    )
+
+    config.add_view(
         add_jobstep,
         name=JobStep.type_info.add_view,
         permission='add',
         renderer='kotti:templates/edit/node.pt',
     )
+
 
 def view_front_page(context, request):
     home_url = get_home_url(request.user)
@@ -365,7 +292,6 @@ def view_front_page(context, request):
     return {
         'api': template_api(context, request),
     }
-
 
 class SeaUnicornisUserAddFormView(UserAddFormView):
     def schema_factory(self):
@@ -397,6 +323,7 @@ def view_signup(context, request):
         'api': template_api(context, request),
         'user_addform': user_addform['form'],
     }
+
 
 def includeme_view(config):
     config.add_view(
