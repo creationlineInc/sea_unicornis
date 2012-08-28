@@ -5,7 +5,7 @@ from setuptools import setup
 install_requires = [
     'Kotti >= 0.7',
     'Babel',
-    'kotti_mapreduce',
+    'kotti_mapreduce >= 0.2.0',
 ]
 
 setup(name='sea_unicornis',
