@@ -29,6 +29,23 @@ Kotti サイトで sea_unicornis アドオンを有効にするには、ini フ�
         kotti_mapreduce.kotti_configure
         sea_unicornis.kotti_configure
 
+実行方法 (開発環境)
+===================
+
+開発環境向けの `development.ini` を使って以下のように実行します。
+`--reload` オプションを付けることでプログラム変更時に自動的にサーバーが再起動されます。
+初回起動時、カレントディレクトリに `Kotti.db`_ (SQLite) が作成されます::
+
+    $ pserve development.ini --reload
+    Starting subprocess with file monitor
+    Sea Unicornis site is initialized
+    Starting server in PID 1583.
+    serving on http://0.0.0.0:6543
+
+.. note::
+
+   `development.ini` はデバッグ向け設定のため、本番環境では新たに ini ファイルを作成します。
+
 ドキュメント
 ============
 
