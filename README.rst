@@ -34,7 +34,7 @@ Kotti サイトで sea_unicornis アドオンを有効にするには、ini フ�
 
 開発環境向けの `development.ini` を使って以下のように実行します。
 `--reload` オプションを付けることでプログラム変更時に自動的にサーバーが再起動されます。
-初回起動時、カレントディレクトリに `Kotti.db`_ (SQLite) が作成されます::
+初回起動時、カレントディレクトリに `Kotti.db` (SQLite) が作成されます::
 
     $ pserve development.ini --reload
     Starting subprocess with file monitor
